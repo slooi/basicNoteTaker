@@ -74,3 +74,26 @@ You must call the file you are sharing `index.ts`. This is the **BARALLEL FILE**
 # Validation
 - Check if dependencies properly linked. Run in SUB-REPO to check sub-repo status and run in MAIN-REPO to check main-repo status!!!
 `pnpm list`
+
+
+
+
+
+
+
+
+# Slate
+1. Remember to create your types and update the slate module
+```ts
+type CustomText = { text: string }
+type CustomElement = { type: 'paragraph'; children: CustomText[] }
+type CodeElement = { type: 'code'; children: CustomText[] }
+
+declare module 'slate' {
+  interface CustomTypes {
+    Editor: BaseEditor & ReactEditor
+    Text: CustomText
+    Element: CustomElement | CodeElement
+  }
+}
+```
